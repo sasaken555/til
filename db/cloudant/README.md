@@ -4,7 +4,7 @@
   * ロードする際には1件ずつだと効率が悪すぎるし負荷が高い。
   * CloudantのBulkロード用のAPIを使う。
 
-```
+```javascript
 deals.bulk({ docs: docs }, (err, body) => {
   if (err) {
     console.error(err);
@@ -22,7 +22,7 @@ deals.bulk({ docs: docs }, (err, body) => {
   * 数千件オーダーを超えると、413 Request Too Largeのエラーで弾かれる。
   * 1,000だとロードできるが、ちょっと怖いので500件ずつだと安心して実行できた。これで7,700件ロードしたけど問題なし。
 
-```
+```javascript
 // 配列分割の事前準備
 const range = 500; // 分割するまとまりの数
 
