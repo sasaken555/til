@@ -4,15 +4,15 @@
 
 * Action --> Reducer --> Store --> View --> (繰り返し)
 
-## Terminology
+## Terminology
 
 * Action / Action Creator
   * stateへの変更操作
   * Action Creatorは変更操作(Action)を返す関数
 
 * Reducer
-  * Actionとstateを受け取って、新しいstateを返す
-  * 同じ値を与えたら同じ結果が返る**業務ロジックのない**関数(= Pure Function)
+  * Actionとstateを受け取って、新しいstateを返す
+  * 同じ値を与えたら同じ結果が返る**業務ロジックのない**関数(= Pure Function)
   * REST APIの呼び出しといった状態や元データそのものに手を加えたる操作はAction Creator側で実装する(Middlewareを活用するらしい?)
 
 * Store
