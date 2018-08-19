@@ -1,0 +1,11 @@
+{
+  "name": "ddb-tutorial",
+  "version": "1.0.0",
+  "description": "Amazon DynamoDB turorial.",
+  "main": "index.js",
+  "author": "Sasaken555",
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.296.0"
+  }
+}
