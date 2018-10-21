@@ -13,12 +13,12 @@
 
 - モックライブラリの拡張
   - Mockito, EasyMockとほぼ同じAPIを持っている
-  - public以外, static/finalなメソッドもモック可能
+  - public以外, static/finalなメソッドもモック可能
 
 ## 使い方
 
 - Mockito2かつJUnit4のAPIを使う前提で..
-- 以下の依存関係を入れる(Maven等のパッケージマネージャーを使う)
+- 以下の依存関係を入れる(Maven等のパッケージマネージャーを使う)
   - `powermock-module-junit4`
   - `powermock-api-mockito2`
 - テストクラスに `@RunWith(PowerMockRunner.class)`
