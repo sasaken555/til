@@ -15,7 +15,7 @@
   > 
   > JUnit 5 = JUnit Platform + JUnit Jupiter + JUnit Vintage
 
-- JUnit5を使うとき...
+- JUnit5を使うとき...
   - Mavenで以下のライブラリを入れる
     - `junit-platform-runner`
     - `junit-jupiter-engine`
@@ -31,7 +31,7 @@
   - Ex) `@Test(expected = SQLException.class)`
 
 - TestRule(`ExpectedException`)を使って検証することもできる.
-  - [ガイド](https://github.com/junit-team/junit4/wiki/exception-testing)
+  - [ガイド](https://github.com/junit-team/junit4/wiki/exception-testing)
 
 ```java
 @Rule

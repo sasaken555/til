@@ -14,7 +14,7 @@
 
 - 公式ガイド
   - [Mockito framework site](https://site.mockito.org/)
-  - [Latest Documentation](https://static.javadoc.io/org.mockito/mockito-core/2.23.0/org/mockito/Mockito.html)
+  - [Latest Documentation](https://static.javadoc.io/org.mockito/mockito-core/2.23.0/org/mockito/Mockito.html)
   - [How to write good tests](https://github.com/mockito/mockito/wiki/How-to-write-good-tests)
 
 ## Install
@@ -31,9 +31,9 @@
   - アノテーションをつけたクラスのインスタンスはメソッドの中身が空になるようだ
 - モックを初期化
   - `@Before` の中で `MockitoAnnotations.initMocks(testClass);`
-  - もしくは, テストクラスの前に `@RunWith(MockitoJUnitRunner.StrictStubs.class)` をつける
+  - もしくは, テストクラスの前に `@RunWith(MockitoJUnitRunner.StrictStubs.class)` をつける
 
-- モックの挙動を定義
+- モックの挙動を定義
 
 ```java
 // 値を返す
@@ -58,11 +58,11 @@ verify(dao).read(ORDER_ID);
 ### Spy
 
 - Spyとは...
-  - Mockと違って, 部分的に実装を差し替えたい場合に使う.
-  - 差し替えていないメソッドが呼ばれた場合は,実際の実装メソッドが呼ばれる
+  - Mockと違って, 部分的に実装を差し替えたい場合に使う.
+  - 差し替えていないメソッドが呼ばれた場合は,実際の実装メソッドが呼ばれる
 
 - 使用するときは...
-  - 部分モックしたいインスタンスに `@Spy` アノテーションをつける
+  - 部分モックしたいインスタンスに `@Spy` アノテーションをつける
   - テストメソッド内で@Mockと同じ書き方で差し替える
   - `Mockito.doReturn(3).when(myList).size();` とワンライナーで書いてもOK!
 
