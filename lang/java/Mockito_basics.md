@@ -3,14 +3,14 @@
 ## Mockitoとは
 
 - Javaのモックライブラリ
-  - モック : 依存するクラス,メソッドの仮実装を提供するもの
+  - モック : 依存するクラス,メソッドをテストしやすいように差し替え機能を提供するもの
 
 - 他のモックライブラリ
   - [EasyMock](http://easymock.org/)
     - Mockitoとよく比較される見たい --> [Mockito vs EasyMock](https://github.com/mockito/mockito/wiki/Mockito-vs-EasyMock)
   - [JMockit](http://jmockit.github.io/)
     - 名前は似ているけど別物
-    - `Expectations`, `Verifications`, `@Mocked`, `@Injectable`, `@Tested`, `MockUp` と書き方が全然違う
+    - `Expectations`, `Verifications`, `@Mocked`, `@Injectable`, `@Tested`, `MockUp` と書き方が全然違う
 
 - 公式ガイド
   - [Mockito framework site](https://site.mockito.org/)
@@ -87,7 +87,7 @@ public class ListTest {
 
   @Test
   public void test() {
-    // モックされていない add() メソッドは,本来の実装メソッドが実行される
+    // モックされていない add() メソッドは,本来の実装メソッドが実行される
     myList.add("Kentaro");
     myList.add("Hiromi");
 
