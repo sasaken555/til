@@ -34,6 +34,7 @@
 
   - 認証画面も事前に用意されてる.
   - デフォルトで追加すると、名前, アドレス, パスワード, パスコードで認証させる設定.
+  - OpenID Connect を使う方法: [Authentication with AWS Amplify and Android: 3rd Party OIDC Providers](https://itnext.io/authentication-with-aws-amplify-and-andro-3rd-party-oidc-providers-df4beaf4110d)
 
 - Storage: S3 or DynamoDB
 
@@ -43,6 +44,7 @@
   - API 認証も IAM, Cognito, API Key から選べる
   - Lambda はローカルでテストもできる！
   - CRUD のハンドラーコードと DDB がセットで作成される
+  - Lambda は Expressjs の Serverless ライブラリを使っているようだ --> [awslabs/aws-serverless-express](https://github.com/awslabs/aws-serverless-express)
 
 - Analytics: Pinpoint
   - どれくらいサイトを訪れたかを計測できたりする
