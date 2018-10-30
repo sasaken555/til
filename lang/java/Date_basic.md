@@ -34,6 +34,10 @@
 ^(\\d{4})(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])([01][0-9]|2[0-3])([0-5][0-9])([0-5][0-9])
 ```
 
+- 参考
+  - https://sessan.hatenablog.com/entry/2013/12/17/194549
+  - https://qiita.com/sea_ship/items/7c8811b5cf37d700adc4
+
 ### 過去/未来日チェック
 
 - Java Bean Validation のアノテーションを使う場合
