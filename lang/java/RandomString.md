@@ -21,7 +21,7 @@
 /**
  * ランダムな文字列を生成
  *
- * @param ength 生成する文字列長
+ * @param length 生成する文字列長
  * @return ランダム文字列
  */
 public static String createRandomString(int length) {
