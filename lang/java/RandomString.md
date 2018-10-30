@@ -19,18 +19,17 @@
 
 ```java
 /**
- * ランダムな文字列を使って
- * アクセストークン /リフレッシュトークンを生成する.
+ * ランダムな文字列を生成
  *
- * @param tokenLength 生成するトークン長
- * @return トークン文字列
+ * @param ength 生成する文字列長
+ * @return ランダム文字列
  */
-public static String createToken(int tokenLength) {
+public static String createRandomString(int length) {
 
-    final String charOption = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    final String charOption = "abcdefghijklmnopqrstuvwxyz0123456789";
     StringBuffer sb = new StringBuffer();
 
-    for (int i = 0; i < tokenLength; i++) {
+    for (int i = 0; i < length; i++) {
         int randomInt = new SecureRandom().nextInt(charOption.length());
         sb.append(charOption.charAt(randomInt));
     }
