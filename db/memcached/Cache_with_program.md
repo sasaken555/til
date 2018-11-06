@@ -14,6 +14,20 @@
 
 ## Java から Memcached を使う例
 
+- Java から扱うには, クライアントとして spymemcached を入れる
+- Maven なら, 以下のように pom.xml に依存関係を追加して `maven update` すればよろしい
+
+```xml
+<dependency>
+  <groupId>junit</groupId>
+  <artifactId>junit</artifactId>
+  <version>4.12</version>
+  <scope>test</scope>
+</dependency>
+```
+
+### プログラム例
+
 ```java
 package com.ponzmild.example;
 
