@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const { body, param, validationResult } = require("express-validator");
-const uuid = require("uuid/v4");
 
+const uuid = require("uuid/v4");
 const USER_TYPE_CONSUMER = "1";
 const USER_TYPE_COMPANY = "2";
 
-/* GET users listing. */
+/* GET user */
 router.get(
   "/:userId",
   [
@@ -31,7 +31,7 @@ router.get(
   }
 );
 
-/* POST user creation */
+/* POST create user */
 router.post(
   "/",
   [
@@ -44,11 +44,17 @@ router.post(
       .isInt()
       .custom(age => age > 0),
 
-    body("email").isEmail(),
+    body("email")
+      .optional()
+      .isEmail(),
 
     body("userType")
       .exists()
-      .isIn([USER_TYPE_CONSUMER, USER_TYPE_COMPANY])
+      .isIn([USER_TYPE_CONSUMER, USER_TYPE_COMPANY]),
+
+    body("email")
+      .if(body("userType").equals(USER_TYPE_COMPANY))
+      .exists()
   ],
   (req, res) => {
     const errors = validationResult(req);
