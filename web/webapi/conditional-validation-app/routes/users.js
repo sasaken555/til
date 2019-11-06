@@ -1,25 +1,52 @@
 const express = require("express");
 const router = express.Router();
-const { check, validationResult } = require("express-validator");
+const { body, param, validationResult } = require("express-validator");
 const uuid = require("uuid/v4");
 
 const USER_TYPE_CONSUMER = "1";
 const USER_TYPE_COMPANY = "2";
 
 /* GET users listing. */
-router.get("/", (req, res) => {
-  res.send("respond with a resource");
-});
+router.get(
+  "/:userId",
+  [
+    param("userId")
+      .exists()
+      .isUUID(4)
+  ],
+  (req, res) => {
+    const userId = req.params.userId;
+    const ts = new Date().toISOString();
 
+    res.json({
+      userId,
+      userName: "hoge",
+      nickName: "fuga-fuga-fuga",
+      age: 31,
+      email: "piyo-piyo-hokekyo@po.uk",
+      userType: USER_TYPE_CONSUMER,
+      createdDate: ts,
+      updatedDate: ts
+    });
+  }
+);
+
+/* POST user creation */
 router.post(
   "/",
   [
-    check("userName").exists(),
-    check("age")
+    body("userName").exists(),
+
+    body("nickName").isLength({ min: 10 }),
+
+    body("age")
       .exists()
-      .isInt(),
-    check("email").isEmail(),
-    check("userType")
+      .isInt()
+      .custom(age => age > 0),
+
+    body("email").isEmail(),
+
+    body("userType")
       .exists()
       .isIn([USER_TYPE_CONSUMER, USER_TYPE_COMPANY])
   ],
