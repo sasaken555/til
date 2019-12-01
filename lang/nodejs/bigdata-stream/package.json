@@ -1,0 +1,11 @@
+{
+  "name": "bigdata-stream",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "sasaken555",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "into-stream": "^5.1.1"
+  }
+}
