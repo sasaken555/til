@@ -1,4 +1,8 @@
 "use strict";
+const { createLogger } = require("./logging-util");
+const logger = createLogger("sample");
+logger.level = "debug";
+
 // -------------------- Create Transformer in Stream ---------------------- //
 
 const { Transform } = require("stream");
@@ -8,9 +12,9 @@ const LineTransformer = class LineTransformer extends Transform {
   }
 
   _transform(chunk, encoding, callback) {
-    const element = chunk;
+    const { _id, label, index, createdAt } = chunk;
     const line =
-      [element._id, element.label, element.index, element.createdAt].join(",") +
+      [_id, label, index, createdAt].join(",") +
       "\n";
     this.push(line);
     callback();
@@ -32,7 +36,7 @@ const createFilePromise = (dataToDump, path) =>
       .pipe(lineTransformer)
       .pipe(ws)
       .on("finish", () => {
-        console.log("finished to write into stream");
+        logger.info("finished to write into stream");
         resolve();
       })
       .on("error", err => {
@@ -42,9 +46,9 @@ const createFilePromise = (dataToDump, path) =>
 
 // -------------------- Prepare -> Transform -> Dump ---------------------- //
 
-console.log(new Date().toISOString(), "Started");
+logger.info("Started");
 
-const MAX_COUNT = 2000000;
+const MAX_COUNT = 2000000; // 200万件
 const data = [];
 for (let di = 0; di < MAX_COUNT; di++) {
   const element = {
@@ -56,15 +60,21 @@ for (let di = 0; di < MAX_COUNT; di++) {
   data.push(element);
 }
 
-console.log(new Date().toISOString(), "Prepare finished");
-console.log(new Date().toISOString(), "Start to dump...");
+logger.info("Prepare finished");
+logger.info("Start to dump...");
 
 const pathToDump = "./awesome-transformed-01.txt";
-createFilePromise(data, pathToDump)
-  .then(() => {
-    console.log("Dump to file:", pathToDump);
-    console.log(new Date().toISOString(), "Finished");
-  })
-  .catch(err => {
-    console.log("Got error:", err);
-  });
+
+(async () => {
+  for (let di = 0; di < 3; di++) {
+    logger.info(`Iteration ${di + 1}`);
+    await createFilePromise(data, pathToDump)
+      .then(() => {
+        logger.info("Dump to file:", pathToDump);
+        logger.info("Finished");
+      })
+      .catch(err => {
+        logger.info("Got error:", err);
+      });
+  }
+})();
