@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: cuda-test
+  name: cuda-test
+spec:
+  containers:
+    - image: k8s.gcr.io/cuda-vector-add:v0.1
+      name: cuda-test
+  dnsPolicy: ClusterFirst
+  restartPolicy: Never
+  nodeSelector:
+    accelerator: nvidia-tesla-p100
