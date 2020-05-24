@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: nginx-secure
+  name: nginx-secure
+spec:
+  containers:
+  - image: nginx
+    name: nginx-secure
+    resources: {}
+    securityContext:
+      capabilities:
+        add: ["NET_ADMIN", "SYS_TIME"]
+  dnsPolicy: ClusterFirst
+  restartPolicy: Never
+status: {}
