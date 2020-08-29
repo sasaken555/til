@@ -4,6 +4,19 @@
 
 日々の学びを貯めておくリポジトリです。
 
+== Usage
+
+AsciiDocで記述されたtilはHTMLやWordに変換可能です。
+
+AsciiDoc -> HTMLに変換する。
+
+ asciidoctor README.adoc
+
+AsciiDoc -> Word(.docx)に変換する。
+
+ asciidoctor --backend docbook --out-file - README.adoc | \
+ pandoc --from docbook --to docx --output README.docx
+
 == Author
 
 Ponzmild
