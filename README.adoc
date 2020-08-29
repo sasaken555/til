@@ -1,0 +1,13 @@
+= til - Today I Learned.
+
+== About
+
+日々の学びを貯めておくリポジトリです。
+
+== Author
+
+Ponzmild
+
+* Blog: https://ponzmild.hatenablog.com/[Ponz Dev Log]
+* Twitter: http://twitter.com/ponzmild[@ponzmild]
+
