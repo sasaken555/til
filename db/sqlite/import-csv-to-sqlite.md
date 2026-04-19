@@ -44,7 +44,7 @@ head -6 inputs/redmine_tickets_dummy.csv
 SQLファイルを用意してテーブルを定義する。
 
 ```bash
-cat << 'EOF' > scripts/create_table.sql
+cat << 'EOF' > sql/create_table.sql
 CREATE TABLE IF NOT EXISTS redmine_tickets (
     ticket_id   INTEGER PRIMARY KEY,
     tracker     TEXT NOT NULL CHECK(tracker  IN ('バグ', '機能', 'サポート', 'タスク')),
@@ -63,7 +63,7 @@ EOF
 DBファイルを作成しテーブル定義を適用する。
 
 ```bash
-sqlite3 db/redmine.db < scripts/create_table.sql
+sqlite3 db/redmine.db < sql/create_table.sql
 ```
 
 テーブルが作成されたことを確認する。
@@ -129,15 +129,15 @@ sqlite3 db/redmine.db \
 
 ## 5. FTS5 全文検索インデックスの構築
 
-> 詳細な設計判断は `docs/adr-full-text-search.md` を参照。
+> 詳細な設計判断は `adr/adr-full-text-search.md` を参照。
 
 ### FTS5 仮想テーブルとトリガーの作成
 
-`scripts/create_fts5.sql` を DB に適用する。  
+`sql/create_fts5.sql` を DB に適用する。  
 `subject`（題名）と `description`（説明）を対象に、trigram トークナイザーで External Content FTS5 テーブルを作成し、既存データを一括インデックス化する。
 
 ```bash
-sqlite3 db/redmine.db < scripts/create_fts5.sql
+sqlite3 db/redmine.db < sql/create_fts5.sql
 ```
 
 ### 作成されたオブジェクトの確認
