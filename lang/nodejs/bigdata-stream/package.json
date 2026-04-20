@@ -7,6 +7,6 @@
   "private": true,
   "dependencies": {
     "into-stream": "^5.1.1",
-    "log4js": "^6.1.0"
+    "log4js": "^6.4.0"
   }
 }
